@@ -29,7 +29,7 @@ Function New-DiceWarePassword {
     .EXAMPLE
         New-DiceWarePassword -Simple
 
-        Returns a simple password like: MINES % 01919
+        Returns a simple password like: MINES%01919
 
     .EXAMPLE
         New-DiceWarePassword -DictionaryDirectory "\\fileserver\passworddictionaries\" -NumberOfDice 5 -NumberOfWords 5
