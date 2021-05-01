@@ -35,6 +35,7 @@ Function New-DiceWarePassword {
         New-DiceWarePassword -DictionaryDirectory "\\fileserver\passworddictionaries\" -NumberOfDice 5 -NumberOfWords 5
 
         Returns a five word password based on the five die dictionary at \\fileserver\passworddictionaries\5.ps1
+        
     .NOTES
         This is not a way to generate secure or truly random passwords. This should be used only for temporary passwords
         in lieu of setting generic common passwords that users never change. 
