@@ -5,7 +5,7 @@ Function New-DiceWarePassword {
         some words turned into numbers in order to meet 'complexity' requiremnents. Returns a string.
 
     .PARAMETER DictionaryDirectory
-        String. Optional. Defaults to local directory. The path to the directory containing the signed password 
+        String. Optional. Defaults to local directory. The path to the directory containing the signed password
         dictionaries.
 
     .PARAMETER NumberOfDice
@@ -16,10 +16,10 @@ Function New-DiceWarePassword {
         32 bit Int. Optional. Defaults to 5. Sets the number of words to return in the password.
 
     .PARAMETER Simple
-        Switch. Optional. Returns a basic WordSymbolNumber password. 
+        Switch. Optional. Returns a basic WordSymbolNumber password.
 
     .PARAMETER SuppressWarning
-        Switch. Optional. Suppresses bad idea warning. 
+        Switch. Optional. Suppresses bad idea warning.
 
     .EXAMPLE
         New-DiceWarePassword 5
@@ -37,17 +37,19 @@ Function New-DiceWarePassword {
         Returns a five word password based on the five die dictionary at \\fileserver\passworddictionaries\5.ps1
     .NOTES
         This is not a way to generate secure or truly random passwords. This should be used only for temporary passwords
-        in lieu of setting generic common passwords that users never change. 
+        in lieu of setting generic common passwords that users never change.
 
-        This assumes you've got diceware word lists for the appropriate $NumberOfDice in $DictionaryDirectory, and that 
+        This assumes you've got diceware word lists for the appropriate $NumberOfDice in $DictionaryDirectory, and that
         they're signed .ps1 files named $NumberOfDice.ps1. By default $DictionaryDirectory is the same director as the
-        script is in. 
+        script is in.
 
         The Dice file needs to be setup with one numbered entry per line, and one small word, such as:
         1314    train
         Each digit must be between 1-6, and each number must be 4 digits. This can easily be scaled to d10, with a new
-        diceware list. 
+        diceware list.
     #>
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([string])]
     Param (
         [Parameter( Mandatory = $False )]
         [int32]
@@ -80,9 +82,7 @@ Function New-DiceWarePassword {
     # Make sure the password file hasn't been altered.
     if ((Get-AuthenticodeSignature $DictionaryDirectory\${NumberOfDice}.ps1).Status -NE "Valid") {
 
-        Write-Error "Password Dictionary signature failed to validate!"
-
-        return $null
+        throw "Password Dictionary signature failed to validate!"
     }
 
     $PasswordDictPath           =   "$DictionaryDirectory\$($NumberOfDice).ps1"
