@@ -148,7 +148,7 @@ Function New-DiceWarePassword {
         if ($Password -cmatch "^[^A-Z]*$"){
             $Password           =   $null
 
-            $Password = New-DiceWarePassword -NumberOfDice $NumberOfDice -NumberOfWords $NumberOfWords -DictionaryDirectory $DictionaryDirectory
+            $Password = New-DiceWarePassword -NumberOfDice $NumberOfDice -NumberOfWords $NumberOfWords -DictionaryDirectory $DictionaryDirectory -SuppressWarning:$SuppressWarning
         }
 
         $Password
