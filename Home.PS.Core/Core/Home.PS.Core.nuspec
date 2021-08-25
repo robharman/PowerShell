@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>Home.PS.Core</id>
+        <version>$VERSIONHERE$</version>
+        <authors>Rob Harman</authors>
+        <description>Core PowerShell functions</description>
+    </metadata>
+</package>
