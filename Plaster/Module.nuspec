@@ -1,0 +1,13 @@
+<%
+@"
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>$PLASTER_PARAM_ModuleName</id>
+        <version>`$VERSIONHERE$</version>
+        <authors>$PLASTER_PARAM_Author</authors>
+        <description>$PLASTER_PARAM_ModuleDescription</description>
+    </metadata>
+</package>
+"@
+%>

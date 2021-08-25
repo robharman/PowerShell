@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Project" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+   <metadata>
+      <name>PowerShellModuleTemplate</name>
+      <id>38575f8f-248a-40b1-8b11-f5be3cf71c55</id>
+      <version>1.0.0</version>
+      <title>PowerShell Module Template</title>
+      <description>Skeleton for PowerShell modules</description>
+      <author>Rob Harman</author>
+      <tags>PowerShell, Module, ModuleManifest, AutomatedBuild</tags>
+   </metadata>
+   <parameters>
+      <parameter name="ModuleName" type="text" prompt="Name of the module"/>
+      <parameter name="ModuleShortName" type="text" prompt="ShortName for the module"/>
+      <parameter name="ModuleDescription" type="text" prompt="Brief description of module (required for publishing to the PowerShell Gallery)"/>
+      <parameter name="ModuleVersion" type="text" default="1.0.0" prompt="Enter the version number of the module"/>
+      <parameter name="Author" type="user-fullname" store="text" default="Rob Harman" prompt="Module author's name"/>
+      <parameter name="CompanyName" type="text" default="RobHarman.me" prompt="Name of your Company"/>
+   </parameters>
+   <content>
+      <message>Creating folder structure</message>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\"/>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\InProgress"/>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}"/>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}\public"/>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}\private"/>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\Build"/>
+      <file source="" destination="${PLASTER_PARAM_ModuleName}\Tests"/>
+      <message>Deploying common files</message>
+      <file source="xBuild.ps1" destination="${PLASTER_PARAM_ModuleName}\Build\Build.ps1"/>
+      <message>Deploying template files</message>
+      <templateFile source="Azure-Pipelines.ps1" destination="${PLASTER_PARAM_ModuleName}\Build\azure-pipelines.yml"/>
+      <templateFile source="BuildPrep.ps1" destination="${PLASTER_PARAM_ModuleName}\Build\BuildPrep.ps1"/>
+      <templateFile source="xgitignore.ps1" destination="${PLASTER_PARAM_ModuleName}\.gitignore"/>
+      <templateFile source="Module.psm1" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}\Public\.Template.ps1"/>
+      <templateFile source="Module.nuspec" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}\${PLASTER_PARAM_ModuleName}.nuspec"/>
+      <templateFile source="Module.psm1" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}\${PLASTER_PARAM_ModuleName}.psm1"/>
+      <templateFile source="Module.psd1" destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleShortName}\${PLASTER_PARAM_ModuleName}.psd1"/>
+      <templateFile source="Module.Tests.ps1" destination="${PLASTER_PARAM_ModuleName}\Tests\${PLASTER_PARAM_ModuleName}.Tests.ps1"/>
+      <templateFile source="Test.Template.ps1" destination="${PLASTER_PARAM_ModuleName}\Tests\.Test.Template.ps1"/>
+      <templateFile source="xReadme.md" destination="${PLASTER_PARAM_ModuleName}\Readme.md"/>
+   </content>
+</plasterManifest>
