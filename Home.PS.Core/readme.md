@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/robbiecrash/Home.PS.Core/_apis/build/status/Home.PS.Core?branchName=main)](https://dev.azure.com/robbiecrash/Home.PS.Core/_build/latest?definitionId=2&branchName=main)
+[![Build Status](https://dev.azure.com/robbiecrash/Home.PS.Core/_apis/build/status/robharman.PowerShell?branchName=main)](https://dev.azure.com/robbiecrash/Home.PS.Core/_build/latest?definitionId=6&branchName=main)
 
 # Home.PS.Core - HomeCore
 Contains common functions, variables, .etc used in other scripts.
