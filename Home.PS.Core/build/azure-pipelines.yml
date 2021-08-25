@@ -121,7 +121,8 @@ stages:
           buildType: 'current'
           artifactName: 'PSFiles'
           itemPattern: |
-            !(*.nupkg|*.nuspec)
+            !(*.nupkg)
+            !(*.nuspec)
             **\**
           targetPath: '$(Pipeline.Workspace)/$(Build.BuildID)/Module'
       - task: CopyFiles@2
@@ -131,31 +132,3 @@ stages:
           contents: '**'
           cleanTargetFolder: true
           targetFolder: '$(moduleTargetFolder)\'
-      - task: GitHubRelease@1
-        condition: eq(variables['Build.SourceBranchName'], 'main')
-        inputs:
-          gitHubConnection: $(gitHubConnection)
-          repositoryName: $(repositoryName)
-          assets: $(System.DefaultWorkingDirectory)/$(ModuleName)/$(ModuleShortName)/**/*.ps*
-
-- stage: Clean
-  jobs:
-  - job: Clean
-    steps:
-      - task: AzureKeyVault@2
-        displayName: 'Import KeyVault Secrets'
-        inputs:
-          azureSubscription: $(AzureSubscriptionID)
-          KeyVaultName: $(KeyVaultName)
-          SecretsFilter: '*'
-          RunAsPreJob: true
-      - task: DeleteFiles@1
-        displayName: 'Remove NuSpec file from module directory.'
-        inputs:
-          contents: |
-            '$(moduleTargetFolder)*.nuspec'
-            '$(moduleTargetFolder)*.npkg'
-      - task: DeleteFiles@1
-        displayName: 'Delete successful deployment artifacts'
-        inputs:
-          contents: '$(Pipeline.Workspace)/$(Build.BuildID)/**'
