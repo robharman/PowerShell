@@ -7,7 +7,7 @@ trigger:
     include:
       - Home.PS.Support
 
-name: 'Private_Home.PS.Support'
+name: 'Home.PS.Support'
 variables:
   major: 1
   minor: 0

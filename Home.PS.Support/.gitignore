@@ -1,0 +1,13 @@
+# Garbage Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.lnk
+
+# Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+*.nuget
+*.zip
