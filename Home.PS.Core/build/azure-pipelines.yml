@@ -12,12 +12,8 @@ variables:
   major: 1
   minor: 0
   patch: 2
-  ${{if eq(variables['Build.SourceBranchName'], 'dev')}}:
-    ModuleVersion: $(major).$(minor).$(patch).$(Build.BuildID)
-  ${{if eq(variables['Build.Reason'], 'PullRequest')}}:
-    ModuleVersion: $(major).$(minor).$(patch).$(Build.BuildID)
+  ModuleVersion: $(major).$(minor).$(patch).$(Build.BuildID)
   ${{if eq(variables['Build.SourceBranchName'], 'main')}}:
-    ModuleVersion: $(major).$(minor).$(patch).0
     DeployRun: True
   modulename: 'Home.PS.Core'
   moduleShortName: 'Core'
