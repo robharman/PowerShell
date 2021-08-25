@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>Home.PS.Support</id>
+        <version>$VERSIONHERE$</version>
+        <authors>Rob Harman</authors>
+        <description>Contains common support commands and variables.</description>
+    </metadata>
+</package>
