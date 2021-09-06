@@ -11,9 +11,9 @@ function Update-HomeOutofOfficeMessage(){
     .PARAMETER OoOMessage
         Optional, string. Required if not disabling reply. You can use full HTML in here!
     .EXAMPLE
-        Update-HomeOutOfOfficeMessage obumbler "Oy will be oyt oyf the oyface."
+        Update-HomeOutOfOfficeMessage obumbler 'Oy will be oyt oyf the oyface.'
 
-        Sets OBumbler's Out of office message to "Oy will be oyt oyf the oyface."
+        Sets OBumbler's Out of office message to 'Oy will be oyt oyf the oyface.'
     .EXAMPLE
         Update-HomeOutOfOfficeMessage edean -disable
 
@@ -26,22 +26,22 @@ function Update-HomeOutofOfficeMessage(){
     Param(
         [Parameter(Mandatory =  $false)]
         [string]
-        $User   =   (read-host "Please enter the UserName"),
+        $User   =   (read-host 'Please enter the UserName'),
 
         [Parameter(Mandatory =  $false)]
         [string]
-        $OoOMessage    =   (read-host "Please enter the Out of Office message as HTML"),
+        $OoOMessage    =   (read-host 'Please enter the Out of Office message as HTML'),
 
         [Parameter(Mandatory = $False)]
         [switch]
         $Disable
     )
 
-    Confirm-HomeOpenShell "Exchange"
+    Confirm-HomeOpenShell 'Exchange'
 
     #Sanitize input
-    if ($User -notlike "*@robharman.me") {
-        $User += "@robharman.me"
+    if ($User -notlike '*@robharman.me') {
+        $User += '@robharman.me'
     }
 
     if ($Disable) {

@@ -39,7 +39,7 @@ function Find-HomeGroup(){
 
         # Catch empty list
         if ($Null -eq $Groups){
-            Write-Error "No Groups found."
+            Write-Error 'No Groups found.'
         }
 
         if ($ReportOnly) {

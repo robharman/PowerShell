@@ -7,14 +7,14 @@ function Get-HomeYesorNo {
 
         Simple wrapper script because I kept having to add this all over the stupid place.
     .PARAMETER Question
-        String. Required. The yes or no question provided to the user. This will automatically have a "?" added if
-        you happen to forget, and "(Yes/No)" will always be appended to it, so don't worry about adding that or
+        String. Required. The yes or no question provided to the user. This will automatically have a '?' added if
+        you happen to forget, and '(Yes/No)' will always be appended to it, so don't worry about adding that or
         it'll look silly in your user prompts.
     .EXAMPLE
-        Get-HomeYesorNo "Have you read the Dark Tower series"
+        Get-HomeYesorNo 'Have you read the Dark Tower series'
 
         Will prompt the user:
-        "Have you read the Dark Tower series? (Yes/No):"
+        'Have you read the Dark Tower series? (Yes/No):'
 
         Then return a $True/$False.
     .NOTES
@@ -30,18 +30,18 @@ function Get-HomeYesorNo {
     )
 
     process {
-        if (!($Question.EndsWith("?"))){
-            $Question = $Question + "?"
+        if (!($Question.EndsWith('?'))){
+            $Question = $Question + '?'
         }
 
-        $ExpandedPrompt = $Question + " (Yes/No)"
+        $ExpandedPrompt = $Question + ' (Yes/No)'
 
         $Answer = read-Host $ExpandedPrompt
 
-        if ("YES","YE","Y" -Contains $Answer) {
+        if ('YES','YE','Y' -Contains $Answer) {
             $true
 
-        }elseif ("NO", "N" -Contains $Answer) {
+        }elseif ('NO', 'N' -Contains $Answer) {
             $false
 
         }else {

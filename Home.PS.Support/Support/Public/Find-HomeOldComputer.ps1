@@ -73,7 +73,7 @@ function Find-HomeOldComputer(){
         $OldComputers   =   $OldComputers | Where-Object {$_.OperatingSystem -notlike "*Server*"}
     }
 
-    if ($OldComputers.Count -eq 0) {throw "No old computers found."}
+    if ($OldComputers.Count -eq 0) {throw 'No old computers found.'}
     # Format Output as needed
     if ($ReportOnly){
 

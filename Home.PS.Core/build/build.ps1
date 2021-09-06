@@ -42,7 +42,7 @@ $ManifestContent        =   $ManifestContent -replace "'<FunctionsToExport>'", $
 $ManifestContent        |   Set-Content -Path $manifestPath
 
 # Makes sure you wrote tests for your functions, which shouldn't be a problem. Because you did, right?
-Write-Output "Checking for missing test files"
+Write-Output 'Checking for missing test files'
 Get-ChildItem $PublicFunctionsPath | ForEach-Object {
     $TestFileName       =   "$(($_.Name).Replace('.ps1','.Tests.ps1'))"
     $TestFile       =   Join-Path -Path $env:SYSTEM_DEFAULTWORKINGDIRECTORY -ChildPath "$ModuleName\Tests\$TestFileName"
@@ -54,7 +54,7 @@ Get-ChildItem $PublicFunctionsPath | ForEach-Object {
     }
 }
 
-if ( $Local:CantContinue ) { throw "At least one test was missing, exiting." }
+if ( $Local:CantContinue ) { throw 'At least one test was missing, exiting.' }
 
 ## Set dynamic .psm1 info
 $PathToJoin     =   @{

@@ -48,7 +48,7 @@ function Find-HomeComputer(){
         }
 
         if ($Null -eq $Computers){
-            Write-Output "No computers found."
+            Write-Output 'No computers found.'
         }
 
         # Format nicely if there's a whack of them to return

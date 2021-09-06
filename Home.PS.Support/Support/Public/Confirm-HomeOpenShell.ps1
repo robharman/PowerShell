@@ -30,16 +30,16 @@ function Confirm-HomeOpenShell(){
     param(
         [Parameter(Mandatory = $False)]
         [string]
-        $ShellType          =   "Exchange"
+        $ShellType          =   'Exchange'
     )
 
     $ShellURLs = @{
-        Exchange                    =   "outlook.office365.com"
-        Security                    =   "*.compliance.protection.outlook.com"
+        Exchange                    =   'outlook.office365.com'
+        Security                    =   '*.compliance.protection.outlook.com'
     }
 
     if (!($ShellURLs.ContainsKey($ShellType))) {
-        throw "Invalid shell type"
+        throw 'Invalid shell type'
     }
 
     $ActiveHomePSSession            =   $False
@@ -54,10 +54,10 @@ function Confirm-HomeOpenShell(){
 
     if (-Not $ActiveHomePSSession){
         switch ($ShellType){
-            "Exchange"{
+            'Exchange' {
                 Connect-HomeExchangeOnlineShell
 
-            }"Security" {
+            } 'Security' {
                 Connect-Home365SecurityShell
             }
         }

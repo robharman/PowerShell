@@ -61,7 +61,7 @@ function Find-HomeGroupMember(){
 
             foreach ($Member in $GroupMembers){
                 # Do the actual recursion
-                if ($Member.ObjectClass -eq "Group"){
+                if ($Member.ObjectClass -eq 'Group'){
 
                     $RecursiveList += Find-HomeGroupMember $Member.Name -Recurse
 

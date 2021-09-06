@@ -21,11 +21,11 @@ function Confirm-HomeLanConnectivity {
     param (
         [parameter( Mandatory = $false )]
         [string]
-        $Target =   "dc00",
+        $Target =   'dc00',
 
         [Parameter( Mandatory = $false )]
         [string]
-        $Domain =   "robharman.me"
+        $Domain =   'robharman.me'
 
     )
 

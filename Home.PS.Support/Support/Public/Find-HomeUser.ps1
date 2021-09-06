@@ -74,7 +74,7 @@ function Find-HomeUser(){
 
         # Catch no users.
         if ($Null -eq $Users) {
-            throw "No users found."
+            throw 'No users found.'
         }
 
         # Pretty up large output.

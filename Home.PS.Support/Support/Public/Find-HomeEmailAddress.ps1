@@ -25,11 +25,11 @@ function Find-HomeEmailAddress(){
     .EXAMPLE
         Find-HomeEmailAddress support
 
-        Retrurns information about all domain accounts which have the word "support" in their email address.
+        Retrurns information about all domain accounts which have the word 'support' in their email address.
     .EXAMPLE
         Find-HomeEmailAddress support -IncludeContacts
 
-        Returns information about all domain accounts, and contacts synced from IH which have the word "support" in
+        Returns information about all domain accounts, and contacts synced from home which have the word "support" in
         their email address.
     .NOTES
         Author:         Rob Harman
@@ -39,7 +39,7 @@ function Find-HomeEmailAddress(){
     Param(
         [Parameter( Mandatory = $True )]
         [ValidateScript({
-            if ($_ -notlike "*@*.*") {
+            if ($_ -notlike '*@*.*') {
                 throw "Expected an email address, got: $_"
 
             }else { return $True }
@@ -64,21 +64,21 @@ function Find-HomeEmailAddress(){
 
     }else{
         $ADObjects  =   Get-ADObject -Properties SAMAccountName,ProxyAddresses -f {proxyaddresses -like $Email} |
-            where-object {$_.DistinguishedName -notlike "*OU=Home Contacts*"}
+            where-object {$_.DistinguishedName -notlike '*OU=Home Contacts*'}
     }
 
     if ($ADObjects.Count -eq 0) {
-        throw "No users found"
+        throw 'No users found'
     }
     # Build list of objects to return.
     $UsersWithAddresses = @()
     if ($FormatOutput) {
         foreach ($ADObject in $ADObjects){
-            $ProxyAddresses =   ""
+            $ProxyAddresses =   ''
 
             # Get all their email addresses
             foreach ($ProxyAddress in $ADObject.ProxyAddresses){
-                if ($ProxyAddress -Like "smtp*"){
+                if ($ProxyAddress -Like 'smtp*'){
                     $ProxyAddresses +=  $ProxyAddress + "`n"
                 }
             }

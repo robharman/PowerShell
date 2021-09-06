@@ -14,14 +14,14 @@ function Set-HomeVariables {
         Version Notes:  Refactor for CI/CD
     #>
     [CmdletBinding(SupportsShouldProcess)]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
     param()
 
     # Defaults
-    Set-Variable -Scope Global -Name PSEmailServer -Value "smtp.robharman.me"
+    Set-Variable -Scope Global -Name PSEmailServer -Value 'smtp.robharman.me'
 
     # Home variables
-    Set-Variable -Scope Global -Name ITAlerts -Value "italerts@robharman.me"
-    Set-Variable -Scope Global -Name ITSupport -Value "itsupport@robharman.me"
-    Set-Variable -Scope Global -Name ITServices -Value "itservices@robharman.me"
+    Set-Variable -Scope Global -Name ITAlerts -Value 'italerts@robharman.me'
+    Set-Variable -Scope Global -Name ITSupport -Value 'itsupport@robharman.me'
+    Set-Variable -Scope Global -Name ITServices -Value 'itservices@robharman.me'
 }
